@@ -2,7 +2,7 @@
 import {initializeApp} from 'firebase/app';
 import {getAuth} from 'firebase/auth'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@firebase/auth'
-import {getFirestore, collection, getDocs, query, getDoc, doc, updateDoc, addDoc} from '@firebase/firestore'
+import {getFirestore, collection, getDocs, query, getDoc, doc, updateDoc, addDoc, where, deleteDoc} from '@firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -136,6 +136,9 @@ export const actualiza = async (idCambio, objeto) => {
 export const nuevaTarea = async(nuevo) =>{
   const ref = await addDoc(collection(database, 'tasks'), nuevo);
 }
-
+//Borrar tareas
+export const borrarTarea = async(idaborrar) =>{
+  await deleteDoc(doc(database, 'tasks',idaborrar));
+}
 
 
